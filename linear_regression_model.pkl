@@ -1,0 +1,15 @@
+# Load model
+model = joblib.load("linear_regression_model.pkl")
+
+# Lấy tên đặc trưng sau tiền xử lý
+num_features = ['discounted_price', 'actual_price', 'discount_percentage', 'rating_count']
+cat_features = model.named_steps['preprocessor'].named_transformers_['cat'].get_feature_names_out(['main_category'])
+
+feature_names = num_features + list(cat_features)
+
+# Lấy hệ số hồi quy
+coefficients = model.named_steps['regressor'].coef_
+
+# In bảng hệ số
+import pandas as pd
+pd.DataFrame({'Feature': feature_names, 'Coefficient': coefficients}).sort_values(by='Coefficient', ascending=False)
