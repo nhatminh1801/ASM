@@ -1,4 +1,7 @@
-streamlit
 pandas
-joblib==1.2.0
-scikit-learn==1.2.2
+numpy
+matplotlib
+seaborn
+scikit-learn
+joblib
+streamlit
